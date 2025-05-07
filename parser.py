@@ -996,6 +996,35 @@ def test_parse_if_statement():
         },
     }
 
+def parse_for_statement(tokens):
+    assert tokens[0]["tag"] == "for"
+    tokens = tokens[1:]
+    assert tokens[0]["tag"] == "("
+    init, tokens = parse_expression(tokens[1:])
+    assert tokens[0]["tag"] == ";"
+    tokens = tokens[1:]
+    condition, tokens = parse_expression(tokens)
+    assert tokens[0]["tag"] == ";"
+    tokens = tokens[1:]
+    update, tokens = parse_expression(tokens)
+    assert tokens[0]["tag"] == ")"
+    tokens = tokens[1:]
+    body, tokens = parse_statement_list(tokens)
+
+    return {
+        "tag": "statement_list",
+        "statements": [
+            init,
+            {
+                "tag": "while",
+                "condition": condition,
+                "do": {
+                    "tag": "statement_list",
+                    "statements": [body, update]
+                }
+            }
+        ]
+    }, tokens
 
 def parse_while_statement(tokens):
     """
