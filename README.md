@@ -82,14 +82,18 @@ DIRECTORY STRUCTURE
 ------------------------
 
 CS-33101-FP-main/
-Tokenizes input source code
-- tokenizer.py
-Converts tokens to AST, includes for-loop support
-- parser.py
-Traverses the AST and executes logic        
-- evaluator.py
-Runs interpreter or REPL
-- runner.py
-This file
-- README.txt
-(tests inside parser/evaluator files)
+- tokenizer.py  
+  Tokenizes input source code into a list of tokens.
+
+- parser.py  
+  Converts tokens into an abstract syntax tree (AST).  
+  Includes support for desugaring 'for' loops into 'while' loops.
+
+- evaluator.py  
+  Traverses the AST and executes the corresponding logic.
+
+- runner.py  
+  Entry point that runs the interpreter or REPL.
+
+- README.txt  
+  This file.
