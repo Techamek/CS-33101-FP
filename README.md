@@ -41,7 +41,7 @@ KEY COMPONENTS
 3. evaluator.py
    - Evaluates the AST and performs actions
    - Supports variable assignment, loops, function calls, etc.
-   - `for` loops are desugared into `while` + update logic
+   - `for` loops are turned into `while` + update logic
 
 4. runner.py
    - Command-line entry point
