@@ -1457,6 +1457,7 @@ if __name__ == "__main__":
         test_parse_statement_list,
         test_parse_if_statement,
         test_parse_while_statement,
+        test_parse_for_statement,
         test_parse_return_statement,
         test_parse_print_statement,
         test_parse_function_statement,
