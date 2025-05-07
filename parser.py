@@ -1027,6 +1027,28 @@ def parse_for_statement(tokens):
         ]
     }, tokens
 
+
+def test_parse_for_statement():
+    """
+    for_statement = "for" "(" expression ";" expression ";" expression ")" statement_list
+    """
+    print("testing parse_for_statement...")
+    code = """
+    for (i = 0; i < 3; i = i + 1) {
+        print i
+    }
+    """
+    ast, tokens = parse_for_statement(tokenize(code))
+    assert ast["tag"] == "statement_list"
+    assert len(ast["statements"]) == 2
+    assert ast["statements"][0]["tag"] == "assign"
+    assert ast["statements"][1]["tag"] == "while"
+    assert ast["statements"][1]["condition"]["tag"] == "<"
+    assert ast["statements"][1]["do"]["tag"] == "statement_list"
+    loop_body = ast["statements"][1]["do"]["statements"]
+    assert loop_body[0]["tag"] == "statement_list"
+    print("parse_for_statement passed.")
+
 def parse_while_statement(tokens):
     """
     while_statement = "while" "(" expression ")" statement_list
