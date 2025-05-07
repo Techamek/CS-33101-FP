@@ -76,7 +76,3 @@ Parser Changes:
 - Added `parse_for_statement(tokens)`
 - Integrated into `parse_statement()`
 - Added test: `test_parse_for_statement()`
-
-------------------------
-DIRECTORY STRUCTURE
-------------------------
