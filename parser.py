@@ -36,6 +36,7 @@ grammar = """
     function_statement = "function" identifier "(" [ identifier { "," identifier } ] ")" statements
 
     if_statement = "if" "(" expression ")" statement_list [ "else" (if_statement | statement_list) ]
+    for_statement = "for" "(" expression ";" expression ";" expression ")" statement_list
     while_statement = "while" "(" expression ")" statement_list
     statement_list = "{" statement { ";" statement } "}"
     exit_statement = "exit" [ expression ]
@@ -1249,7 +1250,7 @@ def test_parse_function_statement():
 
 def parse_statement(tokens):
     """
-    statement = if_statement | while_statement | function_statement | return_statement | print_statement | exit_statement | import_statement | break_statement | continue_statement | assert_statement | expression
+    statement = if_statement | while_statement | function_statement | return_statement | for_statement | print_statement | exit_statement | import_statement | break_statement | continue_statement | assert_statement | expression
     """
     tag = tokens[0]["tag"]
     # note: none of these consumes a token
@@ -1257,6 +1258,8 @@ def parse_statement(tokens):
         return parse_if_statement(tokens)
     if tag == "while":
         return parse_while_statement(tokens)
+    if tag == "for":
+        return parse_for_statement(tokens)
     if tag == "function":
         return parse_function_statement(tokens)
     if tag == "return":
