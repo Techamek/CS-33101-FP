@@ -1047,7 +1047,6 @@ def test_parse_for_statement():
     assert ast["statements"][1]["do"]["tag"] == "statement_list"
     loop_body = ast["statements"][1]["do"]["statements"]
     assert loop_body[0]["tag"] == "statement_list"
-    print("parse_for_statement passed.")
 
 def parse_while_statement(tokens):
     """
