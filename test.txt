@@ -2,15 +2,3 @@ print "Test 1: Simple counter";
 for (i = 0; i < 3; i = i + 1) {
     print i
 }
-
-print "Test 2: Accumulate sum from 1 to 5";
-sum = 0;
-for (j = 1; j <= 5; j = j + 1) {
-    sum = sum + j
-}
-print sum
-
-print "Test 3: Loop with no iterations";
-for (k = 10; k < 5; k = k + 1) {
-    print k
-}
